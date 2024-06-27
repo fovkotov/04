@@ -1,0 +1,65 @@
+@media screen and (max-width: 479px) {
+    .card {
+      width: 185px;
+      padding: 10px;
+    }
+  
+    .book {
+      width: calc(100vw - 40px);
+      padding-left: 20px;
+      padding-right: 20px;
+      position: relative;
+    }
+  
+    .content {
+      padding-left: 0%;
+    }
+  
+    .h1 {
+      letter-spacing: -6px;
+      font-size: 84px;
+    }
+  
+    .body {
+      font-size: 16px;
+    }
+  
+    .places {
+      width: calc(100vw - 40px);
+      padding-left: 20px;
+      padding-right: 20px;
+      position: relative;
+    }
+  
+    .events {
+      width: calc(100vw - 40px);
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  
+    .shows {
+      width: calc(100vw - 40px);
+      padding-left: 20px;
+      padding-right: 20px;
+      position: relative;
+    }
+    .nav {
+      flex-flow: row;
+      width: 100%;
+      height: auto;
+    }
+  
+    .item {
+      width: auto;
+      padding: 4px 20px;
+    }
+  
+    .cupture {
+      width: 50px;
+    }
+  
+    .tab_selection {
+      flex-flow: row;
+      overflow: scroll;
+    }
+}
