@@ -128,27 +128,27 @@ $(document).ready(function () {
                 ] 
 
             
-                function updatePosition() {
-                    const scrollY = $(window).scrollTop(); // Текущая позиция скролла
+            function updatePosition() {
+                const scrollY = $(window).scrollTop(); // Текущая позиция скролла
+        
+                const offsetFactors = [0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6];
+                const rotation = [0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18, 0.2, 0.22, 0.24, 0.26];
             
-                    const offsetFactors = [0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2.0, 2.2, 2.4, 2.6];
-                    const offsetFactors1 = [0, 0.05, 0.08, 0.1, 0.12, 0.16, 0.19, 0.22, 0.25, 0.28, 0.3, 0.32, 0.35, 0.38];
-                
 
-            
-                    elements.forEach(function(element, index) {
-                        const angle = scrollY * offsetFactors1[index]; 
-                        element.css({
-                            'right': `${scrollY * offsetFactors[index]}px`,
-                            'transform': `rotateY(${angle}deg)`,
-                        });
-                        // parent.css({
-                        //     'top': `${scrollY * offsetFactors[index]}px`
-                        // });
+        
+                elements.forEach(function(element, index) {
+                    const angle = scrollY * rotation[index]; 
+                    element.css({
+                        'right': `${scrollY * offsetFactors[index]}px`,
+                        'transform': `rotateY(${angle}deg)`,
                     });
-                }
-            
-                $(window).on('scroll', updatePosition);
+                    // parent.css({
+                    //     'top': `${scrollY * offsetFactors[index]}px`
+                    // });
+                });
+            }
+        
+            $(window).on('scroll', updatePosition);
 
                 //buttons
                 $('#id1').click(function() {
