@@ -24,15 +24,17 @@
         
         
         
-        //loader
-        const gltfLoader = new GLTFLoader(loadingManager)
+        //loaders
+        const gltfLoader = new GLTFLoader()
 
+
+       
 
 
         // sizes 
         const sizes = {
-        w: window.innerWidth,
-        h: window.innerHeight,
+        w: 60,
+        h: 80
         };
 
         //resize
@@ -40,9 +42,8 @@
         'resize', () =>     
         {
             // Update sizes
-            sizes.width = window.innerWidth
-            sizes.height = window.innerHeight
-
+            sizes.w = 60;
+            sizes.h = 80;
 
             // Update camera
             camera.aspect = sizes.w / sizes.h
@@ -181,10 +182,7 @@
         // requestAnimationFrame(animate);              
         
         window.requestAnimationFrame(tick)
-        if (mixer) 
-          mixer.update(clock.getDelta());
-        const time = performance.now() * 0.001;
-        water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
+        
 
 
         }
@@ -285,25 +283,25 @@
             <img id="event_item_07" src="./img/event_07.jpg" alt="">
         </div>
         <div id="event_countenir_08">
-            <img id="event_item_08" src="./img/event_08.png" alt="">
+            <img id="event_item_08" src="./img/event_08.jpg" alt="">
         </div>
         <div id="event_countenir_09">
-            <img id="event_item_09" src="./img/event_09.png" alt="">
+            <img id="event_item_09" src="./img/event_09.jpg" alt="">
         </div>
         <div id="event_countenir_10">
-            <img id="event_item_10" src="./img/event_10.png" alt="">
+            <img id="event_item_10" src="./img/event_10.jpg" alt="">
         </div>
         <div id="event_countenir_11">
-            <img id="event_item_11" src="./img/event_11.png" alt="">
+            <img id="event_item_11" src="./img/event_11.jpg" alt="">
         </div>
         <div id="event_countenir_12">
-            <img id="event_item_12" src="./img/event_12.png" alt="">
+            <img id="event_item_12" src="./img/event_12.jpg" alt="">
         </div>
         <div id="event_countenir_13">
-            <img id="event_item_13" src="./img/event_13.png" alt="">
+            <img id="event_item_13" src="./img/event_13.jpg" alt="">
         </div>
         <div id="event_countenir_14">
-            <img id="event_item_14" src="./img/event_14.png" alt="">
+            <img id="event_item_14" src="./img/event_14.jpg" alt="">
         </div>
 
     </div>
@@ -337,6 +335,13 @@
             <a target=”_blank class="button" href="https://vimeo.com/927400727">
                 <p style="width: 100%;" class="cupture">Full</p>
             </a>
+            <div style="height: auto;" class="nav">
+                <div class="tab_selection">
+                    <div id="id102" class="item"><p class="cupture">Top</p></div>
+                    <div id="id202" class="item"><p class="cupture">Middle</p></div>
+                    <div id="id302" class="item"><p class="cupture">Bottom</p></div>
+                </div>      
+            </div>  
         </div>
     </div>
 </div>
@@ -350,9 +355,9 @@
             </a>
             <div style="height: auto;" class="nav">
                 <div class="tab_selection">
-                    <div id="id1" style="height: 100%;" class="item"><p class="cupture">Top</p></div>
-                    <div id="id2" class="item"><p class="cupture">Middle</p></div>
-                    <div id="id3" class="item"><p class="cupture">Bottom</p></div>
+                    <div id="id101" class="item"><p class="cupture">Top</p></div>
+                    <div id="id201" class="item"><p class="cupture">Middle</p></div>
+                    <div id="id301" class="item"><p class="cupture">Bottom</p></div>
                 </div>      
             </div>  
         </div>

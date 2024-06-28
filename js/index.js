@@ -153,87 +153,123 @@ $(document).ready(function () {
                 //buttons
                 $('#id1').click(function() {
                     $('html, body').animate({
-                        scrollTop: 0 // Прокрутка страницы до верха
-                    }, 'slow'); // 'slow' - время анимации (можно указать число миллисекунд)
+                        scrollTop: 0 // //non
+                    }, 'slow'); ///non
                 });
 
                 $('#id2').click(function() {
                     $('html, body').animate({
-                        scrollTop: 160 // Прокрутка страницы до верха
-                    }, 'slow'); // 'slow' - время анимации (можно указать число миллисекунд)
+                        scrollTop: 160 // //non
+                    }, 'slow'); ///non
                 });
 
                 $('#id3').click(function() {
                     $('html, body').animate({
-                        scrollTop: 310 // Прокрутка страницы до верха
-                    }, 'slow'); // 'slow' - время анимации (можно указать число миллисекунд)
+                        scrollTop: 310 // //non
+                    }, 'slow'); ///non
                 });
 
                 $('#id4').click(function() {
                     $('html, body').animate({
-                        scrollTop: 460 // Прокрутка страницы до верха
-                    }, 'slow'); // 'slow' - время анимации (можно указать число миллисекунд)
+                        scrollTop: 460 // //non
+                    }, 'slow'); ///non
                 });
 
                 $('#id5').click(function() {
                     $('html, body').animate({
-                        scrollTop: 610 // Прокрутка страницы до верха
-                    }, 'slow'); // 'slow' - время анимации (можно указать число миллисекунд)
+                        scrollTop: 610 // //non
+                    }, 'slow'); ///non
                 });
 
                 $('#id6').click(function() {
                     $('html, body').animate({
-                        scrollTop: 760 // Прокрутка страницы до верха
-                    }, 'slow'); // 'slow' - время анимации (можно указать число миллисекунд)
+                        scrollTop: 760 // //non
+                    }, 'slow'); ///non
                 });
 
 
                 $('#id7').click(function() {
                     $('html, body').animate({
-                        scrollTop: 910 // Прокрутка страницы до верха
-                    }, 'slow'); // 'slow' - время анимации (можно указать число миллисекунд)
+                        scrollTop: 910 // //non
+                    }, 'slow'); ///non
                 });
 
                 $('#id8').click(function() {
                     $('html, body').animate({
-                        scrollTop: 1060 // Прокрутка страницы до верха
-                    }, 'slow'); // 'slow' - время анимации (можно указать число миллисекунд)
+                        scrollTop: 1060 // //non
+                    }, 'slow'); ///non
                 });
 
                 $('#id9').click(function() {
                     $('html, body').animate({
-                        scrollTop: 1210 // Прокрутка страницы до верха
-                    }, 'slow'); // 'slow' - время анимации (можно указать число миллисекунд)
+                        scrollTop: 1210 // //non
+                    }, 'slow'); ///non
                 });
 
                 $('#id10').click(function() {
                     $('html, body').animate({
-                        scrollTop: 1360 // Прокрутка страницы до верха
-                    }, 'slow'); // 'slow' - время анимации (можно указать число миллисекунд)
+                        scrollTop: 1360 
+                    }, 'slow'); 
                 });
 
                 $('#id11').click(function() {
                     $('html, body').animate({
-                        scrollTop: 1510 // Прокрутка страницы до верха
-                    }, 'slow'); // 'slow' - время анимации (можно указать число миллисекунд)
+                        scrollTop: 1510 // //non
+                    }, 'slow'); ///non
                 });
 
                 $('#id12').click(function() {
                     $('html, body').animate({
-                        scrollTop: 1660 // Прокрутка страницы до верха
-                    }, 'slow'); // 'slow' - время анимации (можно указать число миллисекунд)
+                        scrollTop: 1660 // //non
+                    }, 'slow'); ///non
                 });
 
                 $('#id13').click(function() {
                     $('html, body').animate({
-                        scrollTop: 1810 // Прокрутка страницы до верха
-                    }, 'slow'); // 'slow' - время анимации (можно указать число миллисекунд)
+                        scrollTop: 1810 // //non
+                    }, 'slow'); ///non
                 });
 
                 $('#id14').click(function() {
                     $('html, body').animate({
-                        scrollTop: 2110 // Прокрутка страницы до верха
-                    }, 'slow'); // 'slow' - время анимации (можно указать число миллисекунд)
+                        scrollTop: 2110 // //non
+                    }, 'slow'); ///non
+                });
+
+                $('#id101').click(function() {
+                    $('html, body').animate({
+                        scrollTop: 0 // //non
+                    }, 'slow'); ///non
+                });
+
+                $('#id201').click(function() {
+                    $('html, body').animate({
+                        scrollTop: 120 // //non
+                    }, 'slow'); ///non
+                });
+
+                $('#id301').click(function() {
+                    $('html, body').animate({
+                        scrollTop: 300 // //non
+                    }, 'slow'); ///non
+                });
+
+                $('#id102').click(function() {
+                    $('html, body').animate({
+                        scrollTop: 2 // //non
+                    }, 'slow'); ///non
+                });
+
+                $('#id202').click(function() {
+                    $('html, body').animate({
+                        scrollTop: 120 // //non
+                    }, 'slow'); ///non
+                });
+
+                $('#id302').click(function() {
+                    $('html, body').animate({
+                        scrollTop: 300 // //non
+                    }, 'slow'); ///non
                 });
 
 
