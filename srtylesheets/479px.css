@@ -1,7 +1,11 @@
 @media screen and (max-width: 479px) {
     .card {
-      width: 185px;
+      width: 100%;
       padding: 10px;
+      bottom: 0;
+      margin: auto;
+      z-index: 20;
+      height: 240px;
     }
   
     .book {
@@ -15,9 +19,12 @@
       padding-left: 0%;
     }
   
-    .h1 {
+    h1 {
       letter-spacing: -6px;
-      font-size: 84px;
+      font-size: 100px;
+      pointer-events: none;
+      user-select: none;
+
     }
   
     .body {
@@ -30,11 +37,15 @@
       padding-right: 20px;
       position: relative;
     }
+
+    .events_text {
+      width: 100%;
+      z-index: 10;
+    }
   
     .events {
-      width: calc(100vw - 40px);
-      padding-left: 20px;
-      padding-right: 20px;
+      width: 100vw;
+      
     }
   
     .shows {
@@ -45,8 +56,12 @@
     }
     .nav {
       flex-flow: row;
-      width: calc(100% - 40px);
+      width: 90%;
       height: auto;
+      margin: 20px;
+      position: absolute;
+      bottom: 40px;
+      z-index: 20;
     }
   
     .item {

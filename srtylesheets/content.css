@@ -236,6 +236,11 @@ display: flex;
     z-index: 1;
 }
 
+.video_bg{
+    position: absolute;
+    z-index: -1;
+    height: 100vh;
+}
 
 .item:nth-child(1){
     offset-anchor: 25% 75%;
