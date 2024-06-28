@@ -26,6 +26,12 @@
         
         //loaders
         const gltfLoader = new GLTFLoader()
+        const gltfLoader2 = new GLTFLoader()
+        const gltfLoader3 = new GLTFLoader()
+        const gltfLoader4 = new GLTFLoader()
+        const gltfLoader5 = new GLTFLoader()
+
+
 
 
        
@@ -63,18 +69,23 @@
         var traks = {
             "model_01": "models/01.gltf",
             "model_02": "models/02.gltf",
-            // "model_03": "models/03.gltf",
-            // "model_04": "models/04.gltf",
-            // "model_05": "models/05.gltf",
+            "model_03": "models/03.gltf",
+            "model_04": "models/04.gltf",
+            "model_05": "models/05.gltf",
         };
 
         //
         //camera
         //
         const camera = new THREE.PerspectiveCamera(60, sizes.w / sizes.h, 0.1, 1000);
+        const camera2 = new THREE.PerspectiveCamera(60, sizes.w / sizes.h, 0.1, 1000);
+        const camera3 = new THREE.PerspectiveCamera(60, sizes.w / sizes.h, 0.1, 1000);
+        const camera4 = new THREE.PerspectiveCamera(60, sizes.w / sizes.h, 0.1, 1000);
+        const camera5 = new THREE.PerspectiveCamera(60, sizes.w / sizes.h, 0.1, 1000);
 
 
-        //
+
+         //
         //renderer
         //
         //01
@@ -84,10 +95,41 @@
             }
             );
         renderer.setSize( sizes.w , sizes.h );
+        //02
+        const renderer2 = new THREE.WebGLRenderer(
+            {
+                alpha: true,
+            }
+            );
+        renderer2.setSize( sizes.w , sizes.h );
+        const renderer3 = new THREE.WebGLRenderer(
+            {
+                alpha: true,
+            }
+            );
+        renderer3.setSize(sizes.w, sizes.h);
+
+        const renderer4 = new THREE.WebGLRenderer(
+        {
+            alpha: true,
+        }
+        );
+        renderer4.setSize(sizes.w, sizes.h);
+
+        const renderer5 = new THREE.WebGLRenderer(
+        {
+            alpha: true,
+        }
+        );
+        renderer5.setSize(sizes.w, sizes.h);
 
             
         //create canvas
         content_card.appendChild(renderer.domElement).id = 'model_01';
+        content_card_02.appendChild(renderer2.domElement).id = 'model_02';
+        content_card_03.appendChild(renderer3.domElement).id = 'model_03';
+        content_card_04.appendChild(renderer4.domElement).id = 'model_04';
+        content_card_05.appendChild(renderer5.domElement).id = 'model_05';
 
 
 
@@ -95,14 +137,14 @@
         // scenes
         //01
         const scene = new THREE.Scene();
-        // //02
-        // const scene2 = new THREE.Scene();
-        // //03
-        // const scene3 = new THREE.Scene();
-        // //04
-        // const scene4 = new THREE.Scene();
-        // //05
-        // const scene5 = new THREE.Scene();
+        //02
+        const scene2 = new THREE.Scene();
+        //03
+        const scene3 = new THREE.Scene();
+        //04
+        const scene4 = new THREE.Scene();
+        //05
+        const scene5 = new THREE.Scene();
         
         
         //load models
@@ -114,9 +156,43 @@
         traks ["model_01"],
             (gltf) =>
             {
-                gltf.scene.scale.set(10, 10, 10)
+                gltf.scene.scale.set(7, 7, 7)
                 scene.add(gltf.scene)
                 
+            }
+        );
+        
+        gltfLoader2.load(
+        traks ["model_02"],
+            (gltf2) =>
+            {
+                gltf2.scene.scale.set(10, 10, 10)
+                scene2.add(gltf2.scene)
+                
+            }
+        );
+        gltfLoader3.load(
+        traks["model_03"],
+        (gltf3) => {
+            gltf3.scene.scale.set(10, 10, 10);
+            scene3.add(gltf3.scene);
+        }
+        );
+
+        gltfLoader4.load(
+            traks["model_04"],
+            (gltf4) => {
+            gltf4.scene.scale.set(10, 10, 10);
+            scene4.add(gltf4.scene);
+            }
+        );
+
+        gltfLoader5.load(
+            traks["model_05"],
+            (gltf5) => {
+            gltf5.scene.scale.set(10, 10, 10);
+            scene5.add(gltf5.scene);
+            
             }
         );
 
@@ -137,6 +213,76 @@
         camera.position.set(10, 0, 10)
 
 
+        //02
+        const ambientLight2 = new THREE.AmbientLight(0xffffff, 1.3)
+        scene2.add(ambientLight2)
+
+        const directionalLight2 = new THREE.DirectionalLight(0xffffff, 1.3)
+        directionalLight2.castShadow = true
+        directionalLight2.shadow.mapSize.set(1024, 1024)
+        directionalLight2.shadow.camera.far = 15
+        directionalLight2.shadow.camera.left = - 7
+        directionalLight2.shadow.camera.top = 7
+        directionalLight2.shadow.camera.right = 7
+        directionalLight2.shadow.camera.bottom = - 7
+        directionalLight2.position.set(- 5, 5, 0)
+        scene2.add(directionalLight)
+        camera2.position.set(20, 0, 10);
+        
+        //03
+        const ambientLight3 = new THREE.AmbientLight(0xffffff, 40)
+        scene3.add(ambientLight3)
+
+        const directionalLight3 = new THREE.DirectionalLight(0xffffff, 1)
+        directionalLight3.castShadow = true
+        directionalLight3.shadow.mapSize.set(1024, 1024)
+        directionalLight3.shadow.camera.far = 15
+        directionalLight3.shadow.camera.left = - 7
+        directionalLight3.shadow.camera.top = 7
+        directionalLight3.shadow.camera.right = 7
+        directionalLight3.shadow.camera.bottom = - 7
+        directionalLight3.position.set(- 5, 5, 0)
+        scene3.add(directionalLight3)
+
+        
+        // spotLight.cone = new THREE.ConeLightHelper(spotLight);  
+        // spotLight.target = camera3.position;  
+        // scene3.add(spotLight);
+
+        camera3.position.set(20, 0, 10);
+        
+        //04
+        const ambientLight4 = new THREE.AmbientLight(0xffffff, 1.3)
+        scene4.add(ambientLight4)
+
+        const directionalLight4 = new THREE.DirectionalLight(0xffffff, 1.3)
+        directionalLight4.castShadow = true
+        directionalLight4.shadow.mapSize.set(1024, 1024)
+        directionalLight4.shadow.camera.far = 15
+        directionalLight4.shadow.camera.left = - 7
+        directionalLight4.shadow.camera.top = 7
+        directionalLight4.shadow.camera.right = 7
+        directionalLight4.shadow.camera.bottom = - 7
+        directionalLight4.position.set(- 5, 5, 0)
+        scene4.add(directionalLight)
+        camera4.position.set(20, 0, 10);
+        
+        //05
+        const ambientLight5 = new THREE.AmbientLight(0xffffff, 1.3)
+        scene5.add(ambientLight5)
+
+        const directionalLight5 = new THREE.DirectionalLight(0xffffff, 1.3)
+        directionalLight5.castShadow = true
+        directionalLight5.shadow.mapSize.set(1024, 1024)
+        directionalLight5.shadow.camera.far = 15
+        directionalLight5.shadow.camera.left = - 7
+        directionalLight5.shadow.camera.top = 7
+        directionalLight5.shadow.camera.right = 7
+        directionalLight5.shadow.camera.bottom = - 7
+        directionalLight5.position.set(- 5, 5, 0)
+        scene5.add(directionalLight)
+        camera5.position.set(20, 0, 10);
+
         //orbit
         //01
         const controls = new OrbitControls(camera, renderer.domElement);
@@ -144,6 +290,30 @@
         controls.dampingFactor = 0.25;
         controls.screenSpacePanning = false;
         controls.enableZoom = false;
+        //02
+        const controls2 = new OrbitControls(camera2, renderer2.domElement);
+        controls2.enableDamping = true; 
+        controls2.dampingFactor = 0.25;
+        controls2.screenSpacePanning = false;
+        controls2.enableZoom = false;
+        
+        const controls3 = new OrbitControls(camera3, renderer3.domElement);
+        controls3.enableDamping = true;
+        controls3.dampingFactor = 0.25;
+        controls3.screenSpacePanning = false;
+        controls3.enableZoom = false;
+
+        const controls4 = new OrbitControls(camera4, renderer4.domElement);
+        controls4.enableDamping = true;
+        controls4.dampingFactor = 0.25;
+        controls4.screenSpacePanning = false;
+        controls4.enableZoom = false;
+
+        const controls5 = new OrbitControls(camera5, renderer5.domElement);
+        controls5.enableDamping = true;
+        controls5.dampingFactor = 0.25;
+        controls5.screenSpacePanning = false;
+        controls5.enableZoom = false;
 
         //clock
         const clock = new THREE.Clock()
@@ -161,15 +331,15 @@
         // controls2.update()
 
         renderer.render(scene, camera)
-        // renderer2.render(scene2, camera2)
+        renderer2.render(scene2, camera2)
                 
-        // controls3.update()
-        // renderer3.render(scene3, camera3)
+        controls3.update()
+        renderer3.render(scene3, camera3)
                 
-        // renderer4.render(scene4, camera4)
+        renderer4.render(scene4, camera4)
                 
-        // controls5.update()
-        // renderer5.render(scene5, camera5)
+        controls5.update()
+        renderer5.render(scene5, camera5)
                 
         // controls6.update()
         // renderer6.render(scene6, camera6)
@@ -203,14 +373,30 @@
                     <div id="content_card"></div>
                 </div>
             </div>
-            <div class="_02"></div>
+            <div class="_02">
+                <div class="model_02">
+                    <div id="content_card_02"></div>
+                </div>
+            </div>
         </div>
         <div class="middle">
-            <div class="_03"></div>
-            <div class="_04"></div>
+            <div class="_03">
+                <div class="model_03">
+                    <div id="content_card_03"></div>
+                </div>
+            </div>
+            <div class="_04">
+                <div class="model_04">
+                    <div id="content_card_04"></div>
+                </div>
+            </div>
         </div>
         <div class="down">
-            <div class="_05"></div>
+            <div class="_05">
+                <div class="model_05">
+                    <div id="content_card_05"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
