@@ -17,7 +17,7 @@ $(document).ready(function () {
                     $(".card").animate({
                         width: '165px'  
                     }, 500);
-                    $(".places, .shows, .events, .book, .about, .bg_im, .places_imagesg").hide();
+                    $(".places, .shows, .events, .book, .about, .bg_im, .places_imagesg,.video_box").hide();
                 } else {
                     $(".card_controlls").animate({
                         width: '710px',   // Новая 
@@ -28,7 +28,7 @@ $(document).ready(function () {
                         justifyContent: 'space-between'
                     }, 500);
                     console.log("about")
-                    $(".places, .shows, .events, .book, .about, .places_images").hide();
+                    $(".places, .shows, .events, .book, .about, .places_images,.video_box").hide();
                     $(".bg_img").show();
                 }
                 isExpanded = !isExpanded;
@@ -38,7 +38,7 @@ $(document).ready(function () {
 
 
                 $(".shows, .video_box").toggle();
-                $(".book, .events, .places, .about, .bg_img, .places_images").hide();
+                $(".book, .events, .places, .about, .bg_img, .places_images,.books_images_enter").hide();
                 
                 //card animation
                 $(".card_controlls").animate({
@@ -53,7 +53,7 @@ $(document).ready(function () {
 
             $("._02").click(function() {
 
-                $(".book, .places_images").toggle();
+                $(".book, .books_images_enter").toggle();
                 $(".shows, .events, .video_box, .places, .about, .bg_img,.places_images").hide();
                 //card animation
                 $(".card_controlls").animate({
@@ -68,7 +68,7 @@ $(document).ready(function () {
             $("._03").click(function() {
 
                 $(".events").toggle();
-                $(".shows, .book, .places,.video_box, .about, .bg_img,.places_images").hide();
+                $(".shows, .book, .places,.video_box, .about, .bg_img,.places_images,.books_images_enter").hide();
                 //card animation
                 $(".card_controlls").animate({
                     width: '165px',  
@@ -82,7 +82,7 @@ $(document).ready(function () {
             $("._04").click(function() {
                 
                 $(" .places_images, .places").toggle();
-                $(".shows, .events,.video_box, .book, .about, .bg_img").hide();
+                $(".shows, .events,.video_box, .book, .about, .bg_img,.books_images_enter").hide();
                 //card animation
                 $(".card_controlls").animate({
                     width: '165px',  
@@ -267,7 +267,7 @@ $(document).ready(function () {
                 const scrollY = $(window).scrollTop(); // Текущая позиция скролла
             
                 const offsetFactors = [0, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.9, 3.1, 3.3, 3.5, 3.7, 3.9];
-                const rotation = [0, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.9, 3.1, 3.3, 3.5, 3.7, 3.9];
+                const rotation = [0, 1, 2, 3, 4, 1.3, 1.5, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.9, 3.1, 3.3, 3.5, 3.7, 3.9];
             
                 elements_places.forEach(function(element, index) {
                     const angle = scrollY * rotation[index]; 
@@ -275,14 +275,133 @@ $(document).ready(function () {
                         'bottom': `${ scrollY * offsetFactors[index]}px`,
                         'transform': `rotateX(${angle}deg)`,
                         'width':  `${scrollY * offsetFactors[index]}%`, // Исправленное выражение для ширины
-                        'height': `${ 5 * scrollY * offsetFactors[index]}%`, // Исправленное выражение для ширины
                     });
                 });
             }
             
             $(window).on('scroll', updatePosition2);
+    
             
 
-        });
-
+            //book scroll   
+            
+            $(document).ready(function() {
+                const elements_book = [
+                    $('#book_29'),
+                    $('#book_28'),
+                    $('#book_27'),
+                    $('#book_26'),
+                    $('#book_25'),
+                    $('#book_24'),
+                    $('#book_23'),
+                    $('#book_22'),
+                    $('#book_21'),
+                    $('#book_20'),
+                    $('#book_19'),
+                    $('#book_18'),
+                    $('#book_17'),
+                    $('#book_16'),
+                    $('#book_15'),
+                    $('#book_14'),
+                    $('#book_13'),
+                    $('#book_12'),
+                    $('#book_11'),
+                    $('#book_10'),
+                    $('#book_09'),
+                    $('#book_08'),
+                    $('#book_07'),
+                    $('#book_06'),
+                    $('#book_05'),
+                    $('#book_04'),
+                    $('#book_03'),
+                    $('#book_02'),
+                    $('#book_01')
+                ];
+            
+                const parent = $('.book'); 
+            
+                function updatePosition() {
+                    const scrollY = $(window).scrollTop();
+                    const scaleFactors = [
+                        1, 
+                        1.01, 
+                        1.02, 
+                        1.03, 
+                        1.04, 
+                        1.05, 
+                        1.06, 
+                        1.07, 
+                        1.08, 
+                        1.09, 
+                        1.10, 
+                        1.11, 
+                        1.12, 
+                        1.13, 
+                        1.14, 
+                        1.15, 
+                        1.16, 
+                        1.17, 
+                        1.18, 
+                        1.19, 
+                        1.20, 
+                        1.21, 
+                        1.22, 
+                        1.23, 
+                        1.24, 
+                        1.25, 
+                        1.26, 
+                        1.27, 
+                        1.28, 
+                        1.29, 
+                    ];
+                    const rotation = [
+                        0, 
+                        0.3, 
+                        0.4, 
+                        0.5, 
+                        0.6, 
+                        0.7, 
+                        0.8, 
+                        0.9, 
+                        1.0, 
+                        1.1, 
+                        1.2, 
+                        1.3, 
+                        1.4, 
+                        1.5, 
+                        1.6, 
+                        1.7, 
+                        1.8, 
+                        1.9, 
+                        2.0, 
+                        2.1, 
+                        2.2, 
+                        2.3, 
+                        2.4, 
+                        2.5, 
+                        2.6, 
+                        2.7, 
+                        2.8, 
+                        2.9, 
+                        3.0
+                    ];
+            
+                    elements_book.forEach(function(element, index) {
+                        const scale = 1 + scrollY * (scaleFactors[index] - 1);
+                        const angle = scrollY * rotation[index]; 
+            
+                        element.css({
+                            'transform': `scale(${scale}) rotateY(${angle}deg)` 
+                        });
+                    });
+            
+                  
+                }
+            
+                $(window).on('scroll', function() {
+                    updatePosition();
+                });
+            });
+            
+    });
 });

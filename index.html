@@ -7,18 +7,191 @@
     <link rel="stylesheet" href="./srtylesheets/styles.css">
     <script type="importmap">
         {
-          "imports": {
-            "three": "https://unpkg.com/three@0.139.0/build/three.module.js",
-            "OrbitControls": "https://unpkg.com/three@0.139.0/examples/jsm/controls/OrbitControls.js",
-            "GLTFLoader": "https://unpkg.com/three@0.139.0/examples/jsm/loaders/GLTFLoader.js",
+            "imports": {
+              "three": "https://unpkg.com/three@v0.149.0/build/three.module.js",
+              "three/addons/": "https://unpkg.com/three@v0.149.0/examples/jsm/"
+            }
           }
-        }
     </script>
     <script src="./js/jquery-3.7.1.js.js"></script>
     <script src="./js/index.js"></script>
 </head>
 <body>
+    <script type="module">
+        import * as THREE from 'three';
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        
+        
+        
+        //loader
+        const gltfLoader = new GLTFLoader(loadingManager)
 
+
+
+        // sizes 
+        const sizes = {
+        w: window.innerWidth,
+        h: window.innerHeight,
+        };
+
+        //resize
+        window.addEventListener(
+        'resize', () =>     
+        {
+            // Update sizes
+            sizes.width = window.innerWidth
+            sizes.height = window.innerHeight
+
+
+            // Update camera
+            camera.aspect = sizes.w / sizes.h
+            camera.updateProjectionMatrix()      
+
+            //Update renders
+            renderer.setSize(sizes.w, sizes.h)
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+
+        })
+        
+        //
+        //tracks
+        //
+        //Переменные, отвечающие за пути к моделькам
+        var traks = {
+            "model_01": "models/01.gltf",
+            "model_02": "models/02.gltf",
+            // "model_03": "models/03.gltf",
+            // "model_04": "models/04.gltf",
+            // "model_05": "models/05.gltf",
+        };
+
+        //
+        //camera
+        //
+        const camera = new THREE.PerspectiveCamera(60, sizes.w / sizes.h, 0.1, 1000);
+
+
+        //
+        //renderer
+        //
+        //01
+        const renderer = new THREE.WebGLRenderer(
+            {
+                alpha: true,
+            }
+            );
+        renderer.setSize( sizes.w , sizes.h );
+
+            
+        //create canvas
+        content_card.appendChild(renderer.domElement).id = 'model_01';
+
+
+
+        
+        // scenes
+        //01
+        const scene = new THREE.Scene();
+        // //02
+        // const scene2 = new THREE.Scene();
+        // //03
+        // const scene3 = new THREE.Scene();
+        // //04
+        // const scene4 = new THREE.Scene();
+        // //05
+        // const scene5 = new THREE.Scene();
+        
+        
+        //load models
+        var model;
+        let mixer = null
+
+        //models
+        gltfLoader.load(
+        traks ["model_01"],
+            (gltf) =>
+            {
+                gltf.scene.scale.set(10, 10, 10)
+                scene.add(gltf.scene)
+                
+            }
+        );
+
+        //01
+        const ambientLight = new THREE.AmbientLight(0xffffff, 1.3)
+        scene.add(ambientLight)
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.3)
+        directionalLight.castShadow = true
+        directionalLight.shadow.mapSize.set(1024, 1024)
+        directionalLight.shadow.camera.far = 15
+        directionalLight.shadow.camera.left = - 7
+        directionalLight.shadow.camera.top = 7
+        directionalLight.shadow.camera.right = 7
+        directionalLight.shadow.camera.bottom = - 7
+        directionalLight.position.set(- 5, 5, 0)
+        scene.add(directionalLight)
+        camera.position.set(10, 0, 10)
+
+
+        //orbit
+        //01
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true; 
+        controls.dampingFactor = 0.25;
+        controls.screenSpacePanning = false;
+        controls.enableZoom = false;
+
+        //clock
+        const clock = new THREE.Clock()
+        let oldElapsedTime = 0
+
+      
+        //animationn
+        const tick = () => {
+        const elapsedTime = clock.getElapsedTime()
+        const deltaTime = elapsedTime - oldElapsedTime
+        oldElapsedTime = elapsedTime
+            
+        
+        controls.update()
+        // controls2.update()
+
+        renderer.render(scene, camera)
+        // renderer2.render(scene2, camera2)
+                
+        // controls3.update()
+        // renderer3.render(scene3, camera3)
+                
+        // renderer4.render(scene4, camera4)
+                
+        // controls5.update()
+        // renderer5.render(scene5, camera5)
+                
+        // controls6.update()
+        // renderer6.render(scene6, camera6)
+                
+        // controls7.update()
+        // renderer7.render(scene7, camera7)
+
+        // renderer8.render(scene8, camera8)
+        // composer.render()
+        // requestAnimationFrame(animate);              
+        
+        window.requestAnimationFrame(tick)
+        if (mixer) 
+          mixer.update(clock.getDelta());
+        const time = performance.now() * 0.001;
+        water.material.uniforms[ 'time' ].value += 1.0 / 60.0;
+
+
+        }
+        tick()
+
+
+    </script>
   <div class="bg_img">
   </div>
   <div class="card">
@@ -28,7 +201,9 @@
         </div> -->
         <div class="top">
             <div class="_01">
-                <div class="model_01"></div>
+                <div class="model_01">
+                    <div id="content_card"></div>
+                </div>
             </div>
             <div class="_02"></div>
         </div>
@@ -49,8 +224,13 @@
         <h1>Shows</h1>
     </div>
     <div class="content">
-        <p>This is some text inside of a div block.</p>
+        <p>We managed to hold 1 show, because of this we feel like heroes, to be honest, there were only 5 images, but it doesn't matter in general</p>
+        <a target=”_blank class="button" href="https://fovkotov.github.io/03_003/">
+            <p style="width: 100%;" class="cupture">Full</p>
+        </a>
     </div>
+
+    
 </div>  
 
 
@@ -59,6 +239,9 @@
         <h1>Events</h1>
         <div class="content">
             <p>This year was an opening year for us, we held a total of 14 events, and we continue to hold.</p>
+            <a target=”_blank class="button" href="https://hsedesign.ru/project/58d2098441504e3081f8f63caed29fa7">
+                <p style="width: 100%;" class="cupture">Full</p>
+            </a>
             <div class="nav">
                 <div class="tab_selection">
                     <div id="id1" class="item"><p class="cupture">5 Jul 2025</p></div>
@@ -78,7 +261,6 @@
                 </div>      
             </div>  
         </div>
-        
     </div>
     <div class="events_content">
         <div id="event_countenir_01">
@@ -152,13 +334,113 @@
         <h1>Places</h1>
         <div class="content">
             <p>This is the home for the King brand, here we produce clothes, relax, arrange shows, have fun, in general, we do everything to be happy.</p>
+            <a target=”_blank class="button" href="https://vimeo.com/927400727">
+                <p style="width: 100%;" class="cupture">Full</p>
+            </a>
         </div>
     </div>
 </div>
 <div class="book">
-    <h1>Book</h1>
-    <div class="content">
-        <p>>This is some text inside of a div block.</p>
+    <div class="book_text">
+        <h1>Book</h1>
+        <div class="content">
+            <p>in the book, we captured one of the processes of developing our product — it was the first self-known helmet</p>
+            <a target=”_blank class="button" href="https://vimeo.com/950039301?share=copy">
+                <p style="width: 100%;" class="cupture">Full</p>
+            </a>
+        </div>
+    </div>  
+</div>  
+<div class="books_images_enter">
+    <div class="book_content">
+        <div id="book_container_01">
+            <img id="book_01" class="books_item" src="./img/book_01.jpg" alt="">
+        </div>
+        <div id="book_container_02">
+            <img id="book_02" class="books_item" src="./img/book_02.jpg" alt="">
+        </div>
+        <div id="book_container_03">
+            <img id="book_03" class="books_item" src="./img/book_03.jpg" alt="">
+        </div>
+        <div id="book_container_04">
+            <img id="book_04" class="books_item" src="./img/book_04.jpg" alt="">
+        </div>
+        <div id="book_container_05">
+            <img id="book_05" class="books_item" src="./img/book_05.jpg" alt="">
+        </div>
+        <div id="book_container_06">
+            <img id="book_06" class="books_item" src="./img/book_06.jpg" alt="">
+        </div>
+        <div id="book_container_07">
+            <img id="book_07" class="books_item" src="./img/book_07.jpg" alt="">
+        </div>
+        <div id="book_container_08">
+            <img id="book_08" class="books_item" src="./img/book_08.jpg" alt="">
+        </div>
+        <div id="book_container_09">
+            <img id="book_09" class="books_item" src="./img/book_09.jpg" alt="">
+        </div>
+        <div id="book_container_10">
+            <img id="book_10" class="books_item" src="./img/book_10.jpg" alt="">
+        </div>
+        <div id="book_container_11">
+            <img id="book_11" class="books_item" src="./img/book_11.jpg" alt="">
+        </div>
+        <div id="book_container_12">
+            <img id="book_12" class="books_item" src="./img/book_12.jpg" alt="">
+        </div>
+        <div id="book_container_13">
+            <img id="book_13" class="books_item" src="./img/book_13.jpg" alt="">
+        </div>
+        <div id="book_container_14">
+            <img id="book_14" class="books_item" src="./img/book_14.jpg" alt="">
+        </div>
+        <div id="book_container_15">
+            <img id="book_15" class="books_item" src="./img/book_15.jpg" alt="">
+        </div>
+        <div id="book_container_16">
+            <img id="book_16" class="books_item" src="./img/book_16.jpg" alt="">
+        </div>
+        <div id="book_container_17">
+            <img id="book_17" class="books_item" src="./img/book_17.jpg" alt="">
+        </div>
+        <div id="book_container_18">
+            <img id="book_18" class="books_item" src="./img/book_18.jpg" alt="">
+        </div>
+        <div id="book_container_19">
+            <img id="book_19" class="books_item" src="./img/book_19.jpg" alt="">
+        </div>
+        <div id="book_container_20">
+            <img id="book_20" class="books_item" src="./img/book_20.jpg" alt="">
+        </div>
+        <div id="book_container_21">
+            <img id="book_21" class="books_item" src="./img/book_21.jpg" alt="">
+        </div>
+        <div id="book_container_22">
+            <img id="book_22" class="books_item" src="./img/book_22.jpg" alt="">
+        </div>
+        <div id="book_container_23">
+            <img id="book_23" class="books_item" src="./img/book_23.jpg" alt="">
+        </div>
+        <div id="book_container_24">
+            <img id="book_24" class="books_item" src="./img/book_24.jpg" alt="">
+        </div>
+        <div id="book_container_25">
+            <img id="book_25" class="books_item" src="./img/book_25.jpg" alt="">
+        </div>
+        <div id="book_container_26">
+            <img id="book_26" class="books_item" src="./img/book_26.jpg" alt="">
+        </div>
+        <div id="book_container_27">
+            <img id="book_27" class="books_item" src="./img/book_27.jpg" alt="">
+        </div>
+        <div id="book_container_28">
+            <img id="book_28" class="books_item" src="./img/book_28.jpg" alt="">
+        </div>
+        <div id="book_container_29">
+            <img id="book_29" class="books_item" src="./img/book_29.jpg" alt="">
+        </div>
+        
     </div>
 </div>
 </body>
