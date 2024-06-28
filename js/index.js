@@ -17,7 +17,7 @@ $(document).ready(function () {
                     $(".card").animate({
                         width: '165px'  
                     }, 500);
-                    $(".places, .shows, .events, .book, .about, .bg_img").hide();
+                    $(".places, .shows, .events, .book, .about, .bg_im, .places_imagesg").hide();
                 } else {
                     $(".card_controlls").animate({
                         width: '710px',   // Новая 
@@ -28,7 +28,7 @@ $(document).ready(function () {
                         justifyContent: 'space-between'
                     }, 500);
                     console.log("about")
-                    $(".places, .shows, .events, .book, .about").hide();
+                    $(".places, .shows, .events, .book, .about, .places_images").hide();
                     $(".bg_img").show();
                 }
                 isExpanded = !isExpanded;
@@ -37,8 +37,8 @@ $(document).ready(function () {
             $("._01").click(function() {
 
 
-                $(".shows").toggle();
-                $(".book, .events, .places, .about, .bg_img").hide();
+                $(".shows, .video_box").toggle();
+                $(".book, .events, .places, .about, .bg_img, .places_images").hide();
                 
                 //card animation
                 $(".card_controlls").animate({
@@ -53,8 +53,8 @@ $(document).ready(function () {
 
             $("._02").click(function() {
 
-                $(".book").toggle();
-                $(".shows, .events, .places, .about, .bg_img").hide();
+                $(".book, .places_images").toggle();
+                $(".shows, .events, .video_box, .places, .about, .bg_img,.places_images").hide();
                 //card animation
                 $(".card_controlls").animate({
                     width: '165px',  
@@ -68,7 +68,7 @@ $(document).ready(function () {
             $("._03").click(function() {
 
                 $(".events").toggle();
-                $(".shows, .book, .places, .about, .bg_img").hide();
+                $(".shows, .book, .places,.video_box, .about, .bg_img,.places_images").hide();
                 //card animation
                 $(".card_controlls").animate({
                     width: '165px',  
@@ -81,8 +81,8 @@ $(document).ready(function () {
 
             $("._04").click(function() {
                 
-                $(".places").toggle();
-                $(".shows, .events, .book, .about, .bg_img").hide();
+                $(" .places_images, .places").toggle();
+                $(".shows, .events,.video_box, .book, .about, .bg_img").hide();
                 //card animation
                 $(".card_controlls").animate({
                     width: '165px',  
@@ -104,7 +104,7 @@ $(document).ready(function () {
 
 
 
-            //events scroll 
+            //events scroll   
             
             $(document).ready(function() {
                 const elements = [
@@ -240,9 +240,48 @@ $(document).ready(function () {
                 
             });
             
-            
-    
+            //places scroll   
 
+            const elements_places = [
+                $('#places_01'),
+                $('#places_02'),
+                $('#places_03'),
+                $('#places_04'),
+                $('#places_05'),
+                $('#places_06'),
+                $('#places_07'),
+                $('#places_08'),
+                $('#places_09'),
+                $('#places_10'),
+                $('#places_11'),
+                $('#places_12'),
+                $('#places_13'),
+                $('#places_14'),
+                $('#places_15')
+            ];
+            
+            // Предположим, что у вас есть только один родительский элемент с классом .places
+            const parent = $('.places');
+            
+            function updatePosition2() {
+                const scrollY = $(window).scrollTop(); // Текущая позиция скролла
+            
+                const offsetFactors = [0, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.9, 3.1, 3.3, 3.5, 3.7, 3.9];
+                const rotation = [0, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 1.7, 1.9, 2.1, 2.3, 2.5, 2.7, 2.9, 3.1, 3.3, 3.5, 3.7, 3.9];
+            
+                elements_places.forEach(function(element, index) {
+                    const angle = scrollY * rotation[index]; 
+                    element.css({
+                        'bottom': `${ scrollY * offsetFactors[index]}px`,
+                        'transform': `rotateX(${angle}deg)`,
+                        'width':  `${scrollY * offsetFactors[index]}%`, // Исправленное выражение для ширины
+                        'height': `${ 5 * scrollY * offsetFactors[index]}%`, // Исправленное выражение для ширины
+                    });
+                });
+            }
+            
+            $(window).on('scroll', updatePosition2);
+            
 
         });
 
